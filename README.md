@@ -31,17 +31,41 @@ pip install -r requirements.txt
 ```
 
 ## Quick Start
-1) Create a .env file in the project folder:
+
+* Create a .env file in the project folder:
 ```
 SFTP_CONNECTION_STRING=sftp://username:password@hostname:22
 DEST_DIR=./downloads
 ```
 
-2) Run:
+* Run:
 ```bash
 python main.py
 ```
-3) Use your controller or keyboard to select a platform, search, and download.
+Use your controller or keyboard to select a platform, search, and download.
+
+## Using the prebuilt .exe (no Python required)
+
+If you downloaded the precompiled executable from Releases:
+- Place romPad.exe anywhere you like (e.g., your Desktop or a games tools folder).
+- In the same folder as romPad.exe, create a .env file with:
+  ```
+  SFTP_CONNECTION_STRING=sftp://username:password@hostname:22
+  DEST_DIR=./downloads
+  ```
+  Notes:
+  - The connection string must start with sftp:// and include your credentials and host. Port is optional (defaults to 22).
+  - DEST_DIR can be absolute (e.g., D:\ROMs\Downloads) or relative to the EXE’s folder. The folder will be created if it doesn’t exist.
+
+Running:
+- Double-click romPad.exe to launch the fullscreen UI.
+- Use your controller or keyboard per the Controls section.
+
+Tips for Windows:
+- SmartScreen may warn on first run. Click “More info” → “Run anyway.”
+  - Portable: No installer or registry use. To update, replace romPad.exe and keep your .env.
+
+> Optional: bake the .env into the EXE during build (for distribution). If you do that, you don’t need to ship a separate .env next to the EXE.
 
 ## Remote layout
 
@@ -88,13 +112,13 @@ PyInstaller is included if you want to build a standalone executable:
 ```bash
 pyinstaller --onefile --noconsole main.py
 ```
-Optionally, add `--add-data "<Path to the source>.env;."` to your command to cake the .env into the executable.
+Optionally, add `--add-data "<Path to the source>.env;."` to your command to bake the .env into the executable.
 
 Adjust flags to your needs and platform.
 
 ## Troubleshooting
 
-- Controller not responding:
+- Controller is not responding:
   - Ensure it’s recognized by your OS and by Pygame
   - Press any button once to “claim” the controller as primary
 - “Missing SFTP_CONNECTION_STRING”:
@@ -103,7 +127,8 @@ Adjust flags to your needs and platform.
 - No platforms listed:
   - Verify your SFTP server has /roms and the platform directories are readable
 - romPad.exe does not open:
-  - Ensure the .env is caked into the executable or in the same folder as the exe
+  - Ensure the .env is baked into the executable or placed in the same folder as the EXE
+
 ## Legal
 
 Only download and use ROMs you legally own and are permitted to copy in your jurisdiction. The authors are not responsible for misuse.
