@@ -1,6 +1,12 @@
 # ROMpad
-
 Controller-first ROM browser and downloader with a living-room friendly UI. Browse platforms, search, and fetch ROMs over SFTP using only a gamepad! Includes multi-select downloads, a virtual on-screen keyboard, and real-time progress with ETA.
+
+### Demo:
+
+---
+![Demo](assets/gif.gif)
+
+---
 
 ## Highlights
 
