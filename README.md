@@ -102,7 +102,8 @@ Adjust flags to your needs and platform.
   - Ensure the string starts with sftp://
 - No platforms listed:
   - Verify your SFTP server has /roms and the platform directories are readable
-
+- romPad.exe does not open:
+  - Ensure the .env is caked into the executable or in the same folder as the exe
 ## Legal
 
 Only download and use ROMs you legally own and are permitted to copy in your jurisdiction. The authors are not responsible for misuse.

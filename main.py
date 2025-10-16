@@ -11,14 +11,24 @@ import traceback
 from datetime import datetime
 import stat
 
-# --- Environment ---
+# --- Load the .env (Baked or local file) ---
 if getattr(sys, "frozen", False):
-    exe_dir = sys._MEIPASS
+    frozen_dir = getattr(sys, "_MEIPASS", None)
+    exe_dir = os.path.dirname(sys.executable)
 else:
+    frozen_dir = None
     exe_dir = os.path.dirname(os.path.abspath(__file__))
-
-dotenv_path = os.path.join(exe_dir, ".env")
-load_dotenv(dotenv_path)
+loaded = False
+if frozen_dir:
+    baked_env = os.path.join(frozen_dir, ".env")
+    if os.path.exists(baked_env):
+        load_dotenv(baked_env)
+        loaded = True
+if not loaded:
+    local_env = os.path.join(exe_dir, ".env")
+    if os.path.exists(local_env):
+        load_dotenv(local_env)
+        loaded = True
 
 SFTP_CONNECTION_STRING = os.getenv("SFTP_CONNECTION_STRING")
 DEST_DIR = os.getenv("DEST_DIR", "./downloads")
