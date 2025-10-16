@@ -1,0 +1,7 @@
+.env
+dist
+build
+.idea
+.venv
+icon.ico
+ROMpad.spec

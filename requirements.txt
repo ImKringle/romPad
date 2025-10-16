@@ -1,0 +1,5 @@
+paramiko
+python-dotenv
+tqdm
+pyinstaller
+pygame
